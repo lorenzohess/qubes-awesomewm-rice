@@ -1,0 +1,320 @@
+#+title: README
+#  LocalWords:  sharedtags AwesomeWM README Qubes modkey wibar imagebox wibox
+#  LocalWords:  tasklist taglist poweroff Tasklist Taglist qube titlebars dirs
+#  LocalWords:  setWallpaper codebase autostarts AppVMs Disp DVMs Wibar Titlebars
+#  LocalWords:  sunday TTL Whonix Qrexec HVM screenlocker Screenlock capslock
+#  LocalWords:  screenlock roadmap grey SPC
+
+My AwesomeWM configuration for Qubes OS.
+
+Changes and additions to the standard Qubes OS AwesomeWM install:
+1. Split =rc.lua= into 11 separate files for ease of use and more accessible auditing.
+2. Make tasklist client buttons reflect clients' Qubes titlebar colors
+3. Programatically increase contrast between titlebar font and titlebar color
+4. Improve and add widgets, some specific to Qubes OS.
+5. Add the tiny =sharedtags= library to share tags over multiple screens.
+
+There are no complex, bloated widgets and every modified Awesome widget is kept nearly identical to its original.
+
+For a detailed overview of the project, see [[file:doc.org]].
+* Install
+1. Install =awesome=: see [[https://qubes-os.org/doc/awesome][qubes-os.org/doc/awesome]].
+2. Clone this repo and make a tarball of everything you want to copy to /dom0/. To use this with no modifications, the minimum you need to transfer to /dom0/ is:
+   - =assets/=
+     - =qubes-logo-icon-dark.png=
+     - =qubes-logo-icon.png=
+   - everything under ~bin/~, ~core/~, ~lib/~, ~themes/~
+   - =config.lua=
+   - =rc.lua=
+3. Extract the tarball to =~/.config/awesome=.
+4. Log out and log in again, making sure to select Awesome in the login manager.
+** Dependencies
+1. Mononoki Nerd Font, Ubuntu Mono Nerd Font, and Open Sans. If you don't want to use these fonts, change the fonts in the theme files to ones you want to use. You need a Nerd Font to get the widget icons.
+2. The =xset= program, which should be already installed.
+** Notes
+1. The commands to run when Awesome starts (in =bin/autorun.sh=) will only run if your username is =lhess= to prevent them accidentally running on another system.
+2. Review =bin/brightness.sh= to confirm you have access to those brightness files under =/sys=.
+* Roadmap
+Non-critical things to do.
+** TODO Move all file path definitions to one place, including
+- scripts and binary executables like j4-dmenu-desktop
+- themes
+** TODO Provide option to eliminate Nerd Font dependency?
+** TODO Make clicking on desktop hide system widget and menu popups
+** lib/
+*** =qubes.lua=
+**** TODO Use =awful.spawn.easy_async= instead of =io.popen= on line 119
+**** TODO Use =awful.spawn.with_line_callback= instead of =io.popen():lines()= on line 236
+** Theme
+*** TODO Solid vs. outline icons
+Have the shell scripts supply slightly different icons based on the theme:
+- light theme -> outline icons
+- dark theme -> solid icons
+*** TODO Widget underlines
+Instead of setting widgets against a rounded rectangle backdrop, underline them with a line and remove the background.
+** Widgets
+*** New
+**** TODO Mouse finder popup
+Draw some wibox identifier (e.g. circle or ring) under mouse to help locate it. Possibly achieve an "animation" effect by drawing and then deleting ring of increasing radii.
+**** TODO Status of camera and microphone
+Show something if they're attached to a VM (helps prevent forgetting to disconnect after use).
+**** TODO System qubes status
+***** TODO "Airplane mode" button with status icon
+Detach all VMs attached to sys-net and shutdown sys-net
+***** TODO Simple ASCII network graph using unman's [[https://github.com/unman/viewer][viewer]]
+**** TODO Qubes Elevator Pitch
+A popup that gives a basic outline of how Qubes OS works which you can use as a quick visual explanation tool. Also an excuse to use Ostrich Sans somewhere.
+
+This would cover all the basic points:
+1. Compartmentalization -> VMs
+2. Template system (read-only access security, shared root storage, quick VM creation, centralized updates)
+3. Copy/Paste -> Global Clipboard
+4. Inter VM communication -> Qrexec framework?
+5. Device handling -> USB qube
+6. Windows -> Windows HVM
+
+And list benefits of the Qubes setup and architecture:
+1. Disposable VMs
+2. Whonix integration
+3. Split "You-Name-It"
+4. Per-Qube networking
+**** TODO Volume
+***** TODO Icon with percentage (like brightness)
+***** TODO Dropdown slider?
+*** Keyboard
+**** TODO Reduce horizontal padding in keyboard layout widget and have it return = [us]=
+**** TODO Compose key indicator
+I sometimes set the compose key to right control on a per-VM basis with =setxkbmap -option compose:rctrl=. This indicator will be yellow if active, and hovering over it will show a popup with the VMs in which the compose key is set to rctrl. This will require writing to a file the VMs with the active compose key (done in a separate script).
+**** TODO Swap caps with escape
+When I find myself in Vim for prolonged periods (if my Emacs config is broken, for example), I swap the Escape key with the Caps Lock key. This indicator will be yellow if this is active, and hovering over it will show a popup with the VMs in which escape and capslock have been swapped. This will require writing to a file the VMs with the swapping (done in a separate script).
+**** DONE Caps lock indicator
+Yellow if active, white if inactive.
+**** DONE Keyboard layout
+*** Calendar
+**** TODO Add next/previous month toggles
+*** Tasklist
+**** TODO Make focused border appear only with more than one window in the workspace
+*** System
+**** Add icon buttons
+***** TODO sleep
+***** TODO restart
+***** Archive :ARCHIVE:
+****** DONE screensaver
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-14 Wed 20:27
+:END:
+**** Archive :ARCHIVE:
+***** DONE Move to dropdown menu
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-14 Wed 20:27
+:END:
+*** Qube count
+**** TODO Move to dropdown
+**** TODO Choose better icons (maybe add text?)
+*** RAM
+**** TODO Text widget with total system RAM used
+**** TODO Dropdown with dom0 RAM
+**** TODO Add domU RAM to dropdown
+*** Kernel
+**** TODO Add toggle for full version (5.15 -> 5.15.94-1)
+*** Qubes Menu
+**** TODO Dynamic qubes menu font size based on number of menu items
+*** Battery
+**** TODO Send notification (sound?) every minute if battery reaches 10%
+*** Archive :ARCHIVE:
+**** DONE Add calendar dropdown widget
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-05-22 Mon 15:40
+:END:
+** Titlebars
+*** TODO Invert titlebar icons (close window, tile, etc)
+*** TODO Draw inverted border around application icon
+** Style
+Use this command in Vim to help replace double quotes surrounding 0-4 character strings with single quotes, while avoiding double quotes with a comma in between (e.g. with comma-separated strings): =:%s/"\([^",]\{0,4}\)"/'\1'/g=.
+* To Do
+** Archive :ARCHIVE:
+*** DONE Widgets
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-14 Wed 20:38
+:END:
+**** Archive :ARCHIVE:
+***** DONE Make individual widget files
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-05-31 Wed 18:28
+:END:
+***** DONE Make tasklist focused border inverted color of titlebar
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-05-31 Wed 18:47
+:END:
+***** DONE Get calendar working
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-05 Mon 22:00
+:END:
+***** DONE Move all widgets to =widgets/=
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-05 Mon 22:04
+:END:
+***** DONE Clean up bar and widget setup (especially tag/tasklist buttons)
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-05 Mon 23:55
+:END:
+***** DONE Make taglist active workspace symbol more clear
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-06 Tue 19:45
+:END:
+***** DONE Hotkeys popup
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-06 Tue 19:45
+:END:
+****** Archive :ARCHIVE:
+******* DONE Make group font independent of hotkey font
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-05 Mon 22:04
+:END:
+******* DONE Fix hotkey popup error
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-06 Tue 19:45
+:END:
+***** DONE Fix Qubes menu error
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-07 Wed 13:02
+:END:
+***** DONE Add widget to show status of screensaver with toggle button
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-14 Wed 20:38
+:END:
+*** DONE Theme
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-14 Wed 20:38
+:END:
+**** Archive :ARCHIVE:
+***** DONE Make =themes= dir
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-04 Sun 23:17
+:END:
+***** DONE Put doom-one theme colors in =doom-one-colors.lua=
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-05-22 Mon 15:41
+:END:
+***** DONE Put Qubes theme colors in =qubes-os-colors.lua=
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-05-22 Mon 15:41
+:END:
+***** DONE Make qubes theme
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-03 Sat 18:52
+:END:
+***** DONE Involve the Ostrich Sans Qubes font (or Open Sans)
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-04 Sun 23:17
+:END:
+***** DONE Update Doom theme from Qubes theme
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-05 Mon 19:50
+:END:
+***** DONE Fix Ostrich Sans hotkey group font
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-05 Mon 19:51
+:END:
+***** DONE Put some calendar options in =config.lua=
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-06 Tue 19:57
+:END:
+- placement
+- start_sunday
+- long_weekdays
+- font size
+***** DONE Make theme template
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-06 Tue 20:00
+:END:
+***** DONE Notifications
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-06 Tue 21:44
+:END:
+****** Archive :ARCHIVE:
+******* DONE TTL?
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-06 Tue 21:26
+:END:
+******* DONE Slide in?
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-06 Tue 21:26
+:END:
+******* DONE Rounded rectangle shape
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-06 Tue 21:26
+:END:
+******* DONE Ensure warnings etc. have red bg
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-06 Tue 21:44
+:END:
+*** DONE Standardize tab spaces and add vim tab instructions
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-15 Thu 11:19
+:END:
+*** DONE Widgets
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-15 Thu 22:50
+:END:
+**** Archive :ARCHIVE:
+***** DONE Remove horizontal spacing in each widget
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-15 Thu 11:32
+:END:
+***** DONE Add grey background to system widget
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-15 Thu 11:40
+:END:
+***** DONE Move caps lock to keyboard widget
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-15 Thu 22:50
+:END:
+*** DONE Decide between using beautiful or theme
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-15 Thu 22:50
+:END:
+*** DONE Make most single quotes into double quotes (strings greater than 4 chars, and all imports)
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-15 Thu 23:24
+:END:
+*** DONE Standardize keybind naming
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-15 Thu 23:53
+:END:
+*** DONE Go through all binding description
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-15 Thu 23:53
+:END:
+*** DONE Redo bindings to make sense
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-25 Sun 17:22
+:END:
+*** DONE Remove theme commented colors
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-28 Wed 22:16
+:END:
+*** DONE Put all helpers in "lib"
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-28 Wed 23:20
+:END:
+*** DONE Update some comments
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-30 Fri 23:47
+:END:
+*** DONE Sort out where configDir, etc are used
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-07-10 Mon 13:31
+:END:
+*** DONE Update template
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-07-15 Sat 17:49
+:END:
+*** DONE Clean up =assets/=
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-07-15 Sat 17:53
+:END:
+*** DONE Lighten doom clipboard red color
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-07-15 Sat 17:59
+:END:

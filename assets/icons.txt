@@ -1,0 +1,28 @@
+stopped at f109
+
+VM counts
+total:  󰆧 
+appvms: 
+sys: 󱒒 󱘖 󱌢 󱌣 
+templates: 󰀿     󰇅 󰽊 󰽋 󰙅 󱏒
+disp vms:  󰂵 󰂶 󱛑 󱔼 󰚠 󱝊
+general:        󰆨 󱐝 󰮄 󰆩 󰽙
+
+  10   4  1 󰀿  0
+
+---
+screensaver: 󰷛 󰿆 󰌾 󰿇 󰍁
+gnu:   󱤹  
+vim: 
+distros:  
+calendar:   󰸗 󰸘
+clipboard:  󰅇 󱓥 󰅌 󱓦 󰱗 󰅊 󰱘 󰱖 󰅍 󱘠 󰨸 󱘡 
+airplane mode: 󰀝 󱡻
+internet: 󰖪 󰤮 󰤭 󰈀 󰈁 󰈂 󰌗 󱊪 󰌘 󰌙 󰌚
+volume: 󰕿 󰖀 󰕾 󰖁
+caps lock: 󰘲
+graph: 
+hardware: 󰍛 󰘚 󰻠
+logout: 󰍃
+shutdown: 
+keyboard: 󰌌 
