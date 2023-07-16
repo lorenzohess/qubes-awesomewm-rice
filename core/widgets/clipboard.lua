@@ -26,7 +26,7 @@ end)
 container_clipboard_widget = {
     {
         { widget = clipboard_widget },
-        left = 10,
+        left = 8,
         right = 5,
         widget = wibox.container.margin
     },

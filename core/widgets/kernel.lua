@@ -28,8 +28,8 @@ kernel_widget:connect_signal("button::press", function() update_kernel_widget() 
 container_kernel_widget = {
     {
         { widget = kernel_widget },
-        left = 8,
-        right = 7,
+        left = 7, 
+        right = 6, 
         widget = wibox.container.margin
     },
     shape = gears.shape.rounded_bar,

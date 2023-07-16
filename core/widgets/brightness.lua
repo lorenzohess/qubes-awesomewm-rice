@@ -18,7 +18,7 @@ local update_brightness_widget = function(brightness)
     brightness_widget.text = brightness
 end
 
-local br, br_signal = awful.widget.watch(widgetsBin .. "/brightness.sh", 2, function(self, stdout)
+awful.widget.watch(widgetsBin .. "/brightness.sh", 2, function(self, stdout)
     local brightness = stdout
     update_brightness_widget(brightness)
 end)
@@ -26,8 +26,8 @@ end)
 container_brightness_widget = {
     {
         { widget = brightness_widget },
-        left = 7,
-        right = 7,
+        left = 6,
+        right = 6,
         widget = wibox.container.margin
     },
     shape = gears.shape.rounded_bar,

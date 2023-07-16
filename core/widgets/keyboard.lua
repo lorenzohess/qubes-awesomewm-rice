@@ -9,10 +9,12 @@ local widget_colors = theme.widgets
 
 local container_keyboard_widget = wibox.container
 
-local keyboard_icon = wibox.widget.textbox(' ') -- 󰌌
+local keyboard_icon = wibox.widget.textbox('') -- 󰌌
 -- The layout widget has a lot of padding so put a pipe and a space after it.
 --local pipe_icon = wibox.widget.textbox('|')
 local space = wibox.widget.textbox(' ')
+local open_bracket = wibox.widget.textbox('[')
+local close_bracket = wibox.widget.textbox(']')
 
 local layout_widget = keyboardlayout()
 local capslock_widget = require("core.widgets.capslock")
@@ -21,13 +23,15 @@ local container_keyboard_widget = {
     {
         {
             keyboard_icon,
+            space,
+            open_bracket,
             layout_widget,
-            --pipe_icon,
             space,
             capslock_widget,
+            close_bracket,
             layout = wibox.layout.fixed.horizontal
         },
-        left = 10,
+        left = 9,
         right = 5,
         widget = wibox.container.margin
     },

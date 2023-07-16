@@ -36,15 +36,11 @@ For a detailed overview of the project, see [[file:doc.org]].
 2. Review =bin/brightness.sh= to confirm you have access to those brightness files under =/sys=.
 * Roadmap
 Non-critical things to do.
-** TODO Move all file path definitions to one place, including
-- scripts and binary executables like j4-dmenu-desktop
-- themes
-** TODO Provide option to eliminate Nerd Font dependency?
-** TODO Make clicking on desktop hide system widget and menu popups
+- [ ] Make clicking on desktop hide all popups (system, calendar, menus)
 ** lib/
 *** =qubes.lua=
-**** TODO Use =awful.spawn.easy_async= instead of =io.popen= on line 119
-**** TODO Use =awful.spawn.with_line_callback= instead of =io.popen():lines()= on line 236
+- [ ] Use =awful.spawn.easy_async= instead of =io.popen= on line 119
+- [ ] Use =awful.spawn.with_line_callback= instead of =io.popen():lines()= on line 236
 ** Theme
 *** TODO Solid vs. outline icons
 Have the shell scripts supply slightly different icons based on the theme:
@@ -82,55 +78,84 @@ And list benefits of the Qubes setup and architecture:
 ***** TODO Icon with percentage (like brightness)
 ***** TODO Dropdown slider?
 *** Keyboard
-**** TODO Reduce horizontal padding in keyboard layout widget and have it return = [us]=
 **** TODO Compose key indicator
 I sometimes set the compose key to right control on a per-VM basis with =setxkbmap -option compose:rctrl=. This indicator will be yellow if active, and hovering over it will show a popup with the VMs in which the compose key is set to rctrl. This will require writing to a file the VMs with the active compose key (done in a separate script).
 **** TODO Swap caps with escape
 When I find myself in Vim for prolonged periods (if my Emacs config is broken, for example), I swap the Escape key with the Caps Lock key. This indicator will be yellow if this is active, and hovering over it will show a popup with the VMs in which escape and capslock have been swapped. This will require writing to a file the VMs with the swapping (done in a separate script).
-**** DONE Caps lock indicator
-Yellow if active, white if inactive.
-**** DONE Keyboard layout
-*** Calendar
-**** TODO Add next/previous month toggles
-*** Tasklist
-**** TODO Make focused border appear only with more than one window in the workspace
-*** System
-**** Add icon buttons
-***** TODO sleep
-***** TODO restart
-***** Archive :ARCHIVE:
-****** DONE screensaver
+**** Archive :ARCHIVE:
+***** DONE Reduce horizontal padding in keyboard layout widget and have it return = [us]=
 :PROPERTIES:
-:ARCHIVE_TIME: 2023-06-14 Wed 20:27
+:ARCHIVE_TIME: 2023-07-16 Sun 00:30
 :END:
+***** DONE Caps lock indicator
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-07-16 Sun 00:30
+:END:
+Yellow if active, white if inactive.
+***** DONE Keyboard layout
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-07-16 Sun 00:30
+:END:
+*** Calendar
+- [ ] Add next/previous month toggles
+*** Tasklist
+- [ ] Make focused border appear only with more than one window in the workspace
+*** System
+- [ ] add restart button
 **** Archive :ARCHIVE:
 ***** DONE Move to dropdown menu
 :PROPERTIES:
 :ARCHIVE_TIME: 2023-06-14 Wed 20:27
 :END:
+***** Archive :ARCHIVE:
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-07-16 Sun 12:42
+:END:
+****** DONE screensaver
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-06-14 Wed 20:27
+:END:
+****** DONE sleep
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-07-16 Sun 00:30
+:END:
 *** Qube count
-**** TODO Move to dropdown
-**** TODO Choose better icons (maybe add text?)
+- [ ] Move to dropdown with text
 *** RAM
-**** TODO Text widget with total system RAM used
-**** TODO Dropdown with dom0 RAM
-**** TODO Add domU RAM to dropdown
+A text widget with total system RAM used.
+- [ ] Dropdown with dom0 RAM
+- [ ] Add domU RAM to dropdown
 *** Kernel
-**** TODO Add toggle for full version (5.15 -> 5.15.94-1)
-*** Qubes Menu
-**** TODO Dynamic qubes menu font size based on number of menu items
+- [ ] Add toggle for full version (5.15 -> 5.15.94-1)
 *** Battery
-**** TODO Send notification (sound?) every minute if battery reaches 10%
+- [ ] Send notification (sound?) every minute when battery reaches 10%
 *** Archive :ARCHIVE:
 **** DONE Add calendar dropdown widget
 :PROPERTIES:
 :ARCHIVE_TIME: 2023-05-22 Mon 15:40
 :END:
+**** DONE Qubes Menu
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-07-16 Sun 12:43
+:END:
+***** Archive :ARCHIVE:
+****** DONE Dynamic qubes menu font size based on number of menu items
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-07-16 Sun 12:43
+:END:
 ** Titlebars
-*** TODO Invert titlebar icons (close window, tile, etc)
-*** TODO Draw inverted border around application icon
+- [ ] Invert colors of icons (close window, tile, etc)
+- [ ] Pick more stylish icons
+- [ ] Draw inverted border around application icon
 ** Style
 Use this command in Vim to help replace double quotes surrounding 0-4 character strings with single quotes, while avoiding double quotes with a comma in between (e.g. with comma-separated strings): =:%s/"\([^",]\{0,4}\)"/'\1'/g=.
+** Archive :noexport: :ARCHIVE:
+*** DONE Move all file path definitions to one place, including
+:PROPERTIES:
+:ARCHIVE_TIME: 2023-07-16 Sun 00:37
+:END:
+- scripts and binary executables like j4-dmenu-desktop
+- themes
 * To Do
 ** Archive :ARCHIVE:
 *** DONE Widgets

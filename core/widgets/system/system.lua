@@ -62,7 +62,7 @@ popup:setup {
 local system_widget = wibox.widget {
     align = 'center',
     valign = 'center',
-    widget = wibox.widget.textbox('󰇅')
+    widget = wibox.widget.textbox('')
 }
 
 local container_system_widget = {

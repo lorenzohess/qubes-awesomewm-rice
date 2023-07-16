@@ -25,8 +25,8 @@ end)
 container_battery_widget = {
     {
         { widget = battery_widget },
-        left = 10,
-        right = 7,
+        left = 8, 
+        right = 6,
         widget = wibox.container.margin
     },
     shape = gears.shape.rounded_bar,

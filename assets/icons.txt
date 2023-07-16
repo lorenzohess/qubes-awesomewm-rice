@@ -1,16 +1,14 @@
 stopped at f109
 
-VM counts
+# VM counts
 total:  󰆧 
 appvms: 
 sys: 󱒒 󱘖 󱌢 󱌣 
-templates: 󰀿     󰇅 󰽊 󰽋 󰙅 󱏒
-disp vms:  󰂵 󰂶 󱛑 󱔼 󰚠 󱝊
-general:        󰆨 󱐝 󰮄 󰆩 󰽙
+templates: 󰀿    󰇅 󰽊 󰽋 󰙅 󱏒
+disp vms:  󰂵 󰂶 󱛑 󱔼 󰚠 󱝊   󰩺 󰩹    
+general qubes:        󰆨 󱐝 󰮄 󰆩 󰽙
 
-  10   4  1 󰀿  0
-
----
+# Other
 screensaver: 󰷛 󰿆 󰌾 󰿇 󰍁
 gnu:   󱤹  
 vim: 

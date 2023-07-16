@@ -24,19 +24,20 @@ Shell scripts, typically for wibar widgets.
 ** =autorun.sh=
 Run anything soon after Awesome starts.
 ** =battery.sh=
-Return something like =󰁾󱐋 44%=.
+Return something like [[file:./images/screenshot-12.png]].
 ** =brightness.sh=
-Return something like =󰃟 60%=.
+Return something like [[file:./images/screenshot-10.png]].
 ** =clipboard.sh=
-Return something like = 110B=. Uses =stat= to get the size of the global clipboard file in /dom0/. If there are security risks to this I'd appreciate knowing.
+
+Uses =stat= to get the size of the global clipboard file in /dom0/. If there are security risks to this I'd appreciate knowing.
 ** =clock.sh=
-Return something like =󱑆= (8 o'clock), which is the clock icon showing the current hour (does not track minutes).
+Return something like [[file:./images/screenshot-13.png]] (8 o'clock), which is the clock icon showing the current hour (does not track minutes).
 ** =cpu.sh=
 Broken attempt at getting CPU load as a percentage.
 ** =memory.sh=
 Broken attempt at getting total RAM usage in GiB.
 ** =qube-count.sh=
-Return information about currently running VMs as something like =11 5 3 󰀿0=. In order, from left to right, and as indicated by the icons, this gives the total number of running VMs, and then the number of running =sys-= VMs, DispVMs, and TemplateVMs.
+Return information about currently running VMs as something like [[file:./images/screenshot-18.png]]. In order, from left to right, and as indicated by the icons, this gives the total number of running VMs, and then the number of running =sys-= VMs, DispVMs, and TemplateVMs.
 * core/
 Where =rc.lua= went.
 ** bar/

@@ -8,10 +8,10 @@
 # `stat` command used to find the size of the file. I'd welcome insight
 # into the security risks of doing so.
 
+icon='󱓥'
 clipFile='/var/run/qubes/qubes-clipboard.bin'
 
 if [ ! -e "$clipFile" ]; then 
-	icon=''
 	clipSizeHR='?'
 else
 	clipSize="$(stat --printf='%s' $clipFile)"
@@ -23,4 +23,4 @@ else
 	fi
 fi
 
-echo " $clipSizeHumanReadable"
+echo "$icon $clipSizeHumanReadable"

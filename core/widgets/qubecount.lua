@@ -18,7 +18,7 @@ local update_qubecount_widget = function(data)
     qubecount_widget.text = data
 end
 
-local qc, qc_signal = awful.widget.watch(widgetsBin .. "/qube-count.sh", 15, function(self, stdout)
+awful.widget.watch(widgetsBin .. "/qube-count.sh", 15, function(self, stdout)
     local data = stdout
     update_qubecount_widget(data)
 end)
@@ -26,7 +26,7 @@ end)
 container_qubecount_widget = {
     {
         { widget = qubecount_widget },
-        left = 10,
+        left = 8, 
         right = 5,
         widget = wibox.container.margin
     },
