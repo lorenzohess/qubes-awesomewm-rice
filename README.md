@@ -1,5 +1,7 @@
 My AwesomeWM configuration for Qubes OS.
 
+![img](images/rice/stacked.png)
+
 Changes and additions to the standard Qubes OS AwesomeWM install:
 
 1.  Split `rc.lua` into 11 separate files for ease of use and more accessible auditing.
